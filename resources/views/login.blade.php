@@ -21,14 +21,15 @@
     </header>
 
     <main class="container text-center">
-        <form action="">
+        <form action="{{ route('login.do') }}" method="POST">
+            @csrf
             <div class="mb-3 lg-2">
-                <label for="email-input" class="form-label">Email</label>
-                <input type="email" class="form-control" id="email-input" required>
+                <label for="email" class="form-label">Email</label>
+                <input name="email" type="email" class="form-control" id="email" required>
             </div>
             <div class="mb-3 lg-2">
-                <label for="senha-input" class="form-label">Senha</label>
-                <input type="password" class="form-control" id="senha-input" required> 
+                <label for="password" class="form-label">Senha</label>
+                <input name="password" type="password" class="form-control" id="password" required> 
             </div>
             <button type="submit" class="btn btn-primary">Entrar</button>
         </form>
