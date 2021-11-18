@@ -17,7 +17,11 @@ class AuthController extends Controller
     */
     public function dashboard() {
         if (Auth::check()) {
-            return view('cantina.dashboard');
+            if (Auth::user()->tipo == 'cantina') {
+                return view('cantina.dashboard');
+            }
+            
+            
         }
         
         return redirect()->route('login');
@@ -42,30 +46,10 @@ class AuthController extends Controller
         
         $credentials = $request->only('email', 'password');
         if (Auth::attempt($credentials)) {
-            return redirect()->route('cantina.dashboard');
+            return redirect()->route('dashboard');
         }
 
         return redirect()->back()->withInput();
-    }
-
-    public function registration() {
-        return view('registration');
-    }
-
-    public function customRegistration(Request $request) {
-        $request->validate([
-            'name' => 'required',
-            'email' => 'required|email|unique:users',
-            'password' => 'required'
-        ]);
-
-        User::create([
-            'name' => $request->name,
-            'email' => $request->email,
-            'password' => Hash::make($request->password)
-        ]);
-
-        return redirect()->route('cantina.dashboard');
     }
 
     public function signOut() {

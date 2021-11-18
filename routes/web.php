@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\CantinaController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,15 +15,16 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+// HomeController
 Route::get('/', [HomeController::class,'index'])->name('home');
 
+// AuthController
 Route::get('login', [AuthController::class, 'showLogin'])->name('login');
 Route::post('login', [AuthController::class, 'login'])->name('login.do');
-
-Route::get('cantina/dashboard', [AuthController::class, 'dashboard'])->name('cantina.dashboard');
-
-Route::post('custom-login', [AuthController::class, 'customLogin'])->name('login.custom'); 
-Route::get('registration', [AuthController::class, 'registration'])->name('register-user');
-Route::post('custom-registration', [AuthController::class, 'customRegistration'])->name('register.custom'); 
+Route::get('dashboard', [AuthController::class, 'dashboard'])->name('dashboard');
 Route::get('signout', [AuthController::class, 'signOut'])->name('signout');
+
+// CantinaController
+Route::get('registration', [CantinaController::class, 'showRegistration'])->name('register.user');
+Route::post('custom-registration', [CantinaController::class, 'registration'])->name('register.user.do'); 
+
