@@ -25,6 +25,10 @@ Route::get('dashboard', [AuthController::class, 'dashboard'])->name('dashboard')
 Route::get('signout', [AuthController::class, 'signOut'])->name('signout');
 
 // CantinaController
-Route::get('registration', [CantinaController::class, 'showRegistration'])->name('register.user');
-Route::post('custom-registration', [CantinaController::class, 'registration'])->name('register.user.do'); 
+Route::get('registration', [CantinaController::class, 'showRegistration'])->name('register.cantina');
+Route::post('custom-registration', [CantinaController::class, 'registration'])->name('register.cantina.do');
+
+Route::get('cantina/dashboard', [CantinaController::class, 'showDashboard'])->name('cantina.dashboard');
+Route::get('cantina/responsaveis', [CantinaController::class, 'showResponsaveis'])->name('cantina.responsaveis');
+Route::get('cantina/alunos', [CantinaController::class, 'showAlunos'])->name('cantina.alunos');
 

@@ -18,7 +18,7 @@ class AuthController extends Controller
     public function dashboard() {
         if (Auth::check()) {
             if (Auth::user()->tipo == 'cantina') {
-                return view('cantina.dashboard');
+                return redirect()->route('cantina.dashboard');
             }
             
             

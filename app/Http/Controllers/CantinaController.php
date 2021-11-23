@@ -30,4 +30,25 @@ class CantinaController extends Controller
 
         return redirect()->route('dashboard');
     }
+
+    public function showDashboard() {
+        if (Auth::check()) {
+            return view('cantina.dashboard');
+        }
+        return redirect()->route('login');
+    }
+
+    public function showResponsaveis() {
+        if (Auth::check()) {
+            return view('cantina.responsaveis');
+        }
+        return redirect()->route('login'); 
+    }
+
+    public function showAlunos() {
+        if (Auth::check()) {
+            return view('cantina.alunos');
+        }
+        return redirect()->route('login');
+    }
 }
