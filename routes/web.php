@@ -31,4 +31,6 @@ Route::post('custom-registration', [CantinaController::class, 'registration'])->
 Route::get('cantina/dashboard', [CantinaController::class, 'showDashboard'])->name('cantina.dashboard');
 Route::get('cantina/responsaveis', [CantinaController::class, 'showResponsaveis'])->name('cantina.responsaveis');
 Route::get('cantina/alunos', [CantinaController::class, 'showAlunos'])->name('cantina.alunos');
+Route::get('cantina/responsaveis/adicionar', [CantinaController::class, 'showAdicionarResponsaveis'])->name('cantina.adicionarResponsaveis');
+Route::post('cantina/responsaveis/adicionar', [CantinaController::class, 'adicionarResponsavel'])->name('cantina.adicionarResponsavel.do');
 

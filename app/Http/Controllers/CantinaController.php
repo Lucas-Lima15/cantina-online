@@ -51,4 +51,15 @@ class CantinaController extends Controller
         }
         return redirect()->route('login');
     }
+
+    public function showAdicionarResponsaveis() {
+        if (Auth::check()) {
+            return view('cantina.adicionarResponsavel');
+        }
+        return redirect()->route('login');
+    }
+
+    public function adicionarResponsavel(Request $request) {
+        dd($request->all());
+    }
 }
