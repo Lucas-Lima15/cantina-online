@@ -68,8 +68,12 @@
                 <td>{{$user->name}}</td>
                 <td>{{$user->responsavel['telefone']}}</td>
                 <td>{{$user->email}}</td>
-                <td><a href="{{route('cantina.editaResponsavel', ['id' => $user->id])}}">Editar</a></td>
-                <td><a href="{{route('cantina.excluirResponsavel.do', ['id' => $user->id])}}">Excluir</a></td>
+                <td><a href="{{route('cantina.editaResponsavel', ['id' => $user->id])}}">
+                  <button class="btn btn-warning">Editar</button>
+                </a></td>
+                <td><a href="{{route('cantina.excluirResponsavel.do', ['id' => $user->id])}}">
+                  <button class="btn btn-danger">Excluir</button>
+                </a></td>
               </tr>
               @endforeach
             </tbody>
