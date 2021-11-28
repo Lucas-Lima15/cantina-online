@@ -24,6 +24,11 @@ class User extends Authenticatable
         'tipo',
     ];
 
+    // Relacionamento com Responsavel
+    public function responsavel() {
+        return $this->hasOne(Responsavel::class);
+    }
+
     /**
      * The attributes that should be hidden for serialization.
      *

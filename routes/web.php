@@ -33,4 +33,7 @@ Route::get('cantina/responsaveis', [CantinaController::class, 'showResponsaveis'
 Route::get('cantina/alunos', [CantinaController::class, 'showAlunos'])->name('cantina.alunos');
 Route::get('cantina/responsaveis/adicionar', [CantinaController::class, 'showAdicionarResponsaveis'])->name('cantina.adicionarResponsaveis');
 Route::post('cantina/responsaveis/adicionar', [CantinaController::class, 'adicionarResponsavel'])->name('cantina.adicionarResponsavel.do');
+Route::get('cantina/responsaveis/deletar/{id}', [CantinaController::class, 'deletaResponsavel'])->name('cantina.excluirResponsavel.do');
+Route::get('cantina/responsaveis/editar/{id}', [CantinaController::class, 'showEditaResponsavel'])->name('cantina.editaResponsavel');
+Route::post('cantina/responsaveis/editar/{id}', [CantinaController::class, 'editaResponsavel'])->name('cantina.editaResponsavel.do');
 

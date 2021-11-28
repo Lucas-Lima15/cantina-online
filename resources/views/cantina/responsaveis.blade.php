@@ -6,8 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="{{asset('css/app.css')}}">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
   <title>Cantina Online - Cantina</title>
 </head>
 
@@ -16,8 +15,7 @@
     <nav class="navbar navbar-expand-sm navbar-light bg-light">
       <div class="container-fluid">
         <a class="navbar-brand" href="">
-          <img src="{{asset('img/cantina-web.png')}}" alt="" width="100" height="100"
-            class="d-inline-block align-text-top">
+          <img src="{{asset('img/cantina-web.png')}}" alt="" width="100" height="100" class="d-inline-block align-text-top">
         </a>
         <ul class="nav justify-content-center">
           <li class="nav-item">
@@ -38,11 +36,11 @@
   </header>
   <main>
     <div class="container espaco">
-        <div class="row text-center col-lg-12">
-            <a href="{{route('cantina.adicionarResponsaveis')}}">
-                <button class="btn btn-success">Adicionar Responsável</button>
-            </a>
-        </div>
+      <div class="row text-center col-lg-12">
+        <a href="{{route('cantina.adicionarResponsaveis')}}">
+          <button class="btn btn-success">Adicionar Responsável</button>
+        </a>
+      </div>
     </div>
 
     <div class="container espaco">
@@ -53,6 +51,7 @@
           <table class="table table-striped table-sm">
             <thead>
               <tr>
+                <th scope="col">Id</th>
                 <th scope="col">CPF</th>
                 <th scope="col">Nome</th>
                 <th scope="col">Telefone</th>
@@ -62,7 +61,17 @@
               </tr>
             </thead>
             <tbody>
-              
+              @foreach ($users as $user)
+              <tr>
+                <th scope="row">{{$user->id}}</th>
+                <td>{{$user->responsavel['cpf']}}</td>
+                <td>{{$user->name}}</td>
+                <td>{{$user->responsavel['telefone']}}</td>
+                <td>{{$user->email}}</td>
+                <td><a href="{{route('cantina.editaResponsavel', ['id' => $user->id])}}">Editar</a></td>
+                <td><a href="{{route('cantina.excluirResponsavel.do', ['id' => $user->id])}}">Excluir</a></td>
+              </tr>
+              @endforeach
             </tbody>
           </table>
         </div>
@@ -70,63 +79,9 @@
       </div>
     </div>
 
-    <div class="container espaco">
-      <div class="row text-center">
-        <button class="btn btn-success" type="button" data-bs-toggle="collapse" data-bs-target="#responsavel"
-          aria-expanded="false" aria-controls="collapseExample">
-          Adicionar Responsável
-        </button>
-      </div>
-      <br>
-      <div class="row text-center collapse" id="responsavel">
-        <div class="col-lg-3">
-          <div class="mb-3">
-            <label for="codigoForm" class="form-label">CPF</label>
-            <input type="number" class="form-control" id="codigoForm" required>
-          </div>
-        </div>
-        <div class="col-lg-3">
-          <div class="mb-3">
-            <label for="nomeForm" class="form-label">Nome</label>
-            <input type="text" class="form-control" id="nomeForm" required>
-          </div>
-        </div>
-        <div class="col-lg-3">
-          <div class="mb-3">
-            <label for="fornecedorForm" class="form-label">Telefone</label>
-            <input type="text" class="form-control" id="forcenedorForm" required>
-          </div>
-        </div>
-        <div class="col-lg-3">
-          <div class="mb-3">
-            <label for="precoForm" class="form-label">Email</label>
-            <input type="email" class="form-control" id="precoForm" required>
-          </div>
-        </div>
-        <div class="col-lg-3">
-          <div class="mb-3">
-            <label for="imagemForm" class="form-label">Login</label>
-            <input type="text" class="form-control" id="imagemForm" required>
-          </div>
-        </div>
-        <div class="col-lg-3">
-          <div class="mb-3">
-            <label for="imagemForm" class="form-label">Senha</label>
-            <input type="password" class="form-control" id="imagemForm" required>
-          </div>
-        </div>
-        <div class="col-lg-3">
-          <div class="mb-3">
-            <input type="submit" class="form-control btn btn-success" id="nomeForm" value="Enviar">
-          </div>
-        </div>
-      </div>
-    </div>
   </main>
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ"
-    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
 </body>
 
 </html>

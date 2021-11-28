@@ -40,7 +40,8 @@ class CantinaController extends Controller
 
     public function showResponsaveis() {
         if (Auth::check()) {
-            return view('cantina.responsaveis');
+            $users = User::where('tipo', 'responsavel')->get();
+            return view('cantina.responsaveis', compact('users'));
         }
         return redirect()->route('login'); 
     }
@@ -60,6 +61,46 @@ class CantinaController extends Controller
     }
 
     public function adicionarResponsavel(Request $request) {
-        dd($request->all());
+        $request->validate([
+            'name' => 'required',
+            'email' => 'required|email|unique:users',
+            'password' => 'required'
+        ]);
+
+        $user = User::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => Hash::make($request->password),
+            'tipo' => 'responsavel'
+        ]);
+
+        $user->responsavel()->create($request->all());
+
+        return redirect()->route('cantina.responsaveis');
+    }
+
+    public function deletaResponsavel($id) {
+        $user = User::findOrFail($id);
+        $user->responsavel()->delete();
+        $user->delete();
+
+        return redirect()->route('cantina.responsaveis');
+    }
+
+    public function showEditaResponsavel($id) {
+        $user = User::findOrFail($id);
+        return view('cantina.editarResponsavel', compact('user'));
+    }
+
+    public function editaResponsavel(Request $request, $id) {
+        $user = User::findOrFail($id);
+        // dd($request->except('_token'));
+        $user->update($request->all());
+        $user->responsavel()->update([
+            'cpf' => $request->cpf,
+            'telefone' => $request->telefone
+        ]);
+
+        return redirect()->route('cantina.responsaveis');
     }
 }

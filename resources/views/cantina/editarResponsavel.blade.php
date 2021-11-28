@@ -29,30 +29,25 @@
         </div>
         <div class="container espaco">
             <div class="row text-center">
-                <form class="espaco" action="{{route('cantina.adicionarResponsavel.do')}}" method="POST">
+                <form class="espaco" action="{{route('cantina.editaResponsavel.do', ['id' => $user->id])}}" method="POST">
                     @csrf
 
 
                     <div class="form-floating mb-3">
-                        <input type="text" name="name" class="form-control" id="nome" placeholder="Nome">
+                        <input type="text" name="name" class="form-control" id="nome" placeholder="Nome" value="{{$user->name}}">
                         <label for="name">Nome</label>
                     </div>
                     <div class="form-floating mb-3">
-                        <input type="email" name="email" class="form-control" id="email" placeholder="name@example.com">
+                        <input type="email" name="email" class="form-control" id="email" placeholder="name@example.com" value="{{$user->email}}">
                         <label for="email">Email</label>
                     </div>
                     <div class="form-floating mb-3">
-                        <input type="text" name="cpf" class="form-control" id="cpf" placeholder="XXX.XXX.XXX-XX">
+                        <input type="text" name="cpf" class="form-control" id="cpf" placeholder="XXX.XXX.XXX-XX" value="{{$user->responsavel['cpf']}}">
                         <label for="cpf">CPF</label>
                     </div>
                     <div class="form-floating mb-3">
-                        <input type="text" name="telefone" class="form-control" id="telefone" placeholder="Telefone">
+                        <input type="text" name="telefone" class="form-control" id="telefone" placeholder="Telefone" value="{{$user->responsavel['telefone']}}">
                         <label for="telefone">Telefone</label>
-                    </div>
-
-                    <div class="form-floating">
-                        <input type="password" name="password" class="form-control" id="password" placeholder="Password">
-                        <label for="password">Senha</label>
                     </div>
                     <div class=" text-center">
                         <button type="submit" class="btn btn-success">Enviar</button>
