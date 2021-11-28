@@ -31,9 +31,15 @@ Route::post('custom-registration', [CantinaController::class, 'registration'])->
 Route::get('cantina/dashboard', [CantinaController::class, 'showDashboard'])->name('cantina.dashboard');
 Route::get('cantina/responsaveis', [CantinaController::class, 'showResponsaveis'])->name('cantina.responsaveis');
 Route::get('cantina/alunos', [CantinaController::class, 'showAlunos'])->name('cantina.alunos');
+
 Route::get('cantina/responsaveis/adicionar', [CantinaController::class, 'showAdicionarResponsaveis'])->name('cantina.adicionarResponsaveis');
 Route::post('cantina/responsaveis/adicionar', [CantinaController::class, 'adicionarResponsavel'])->name('cantina.adicionarResponsavel.do');
 Route::get('cantina/responsaveis/deletar/{id}', [CantinaController::class, 'deletaResponsavel'])->name('cantina.excluirResponsavel.do');
 Route::get('cantina/responsaveis/editar/{id}', [CantinaController::class, 'showEditaResponsavel'])->name('cantina.editaResponsavel');
 Route::post('cantina/responsaveis/editar/{id}', [CantinaController::class, 'editaResponsavel'])->name('cantina.editaResponsavel.do');
 
+Route::get('cantina/produtos/adicionar', [CantinaController::class, 'showAdicionarProduto'])->name('cantina.adicionarProduto');
+Route::post('cantina/produtos/adicionar', [CantinaController::class, 'adicionarProduto'])->name('cantina.adicionarProduto.do');
+Route::get('cantina/produtos/deletar/{id}', [CantinaController::class, 'deletaProduto'])->name('cantina.excluirProduto.do');
+Route::get('cantina/produtos/editar/{id}', [CantinaController::class, 'showEditaProduto'])->name('cantina.editaProduto');
+Route::post('cantina/produtos/editar/{id}', [CantinaController::class, 'editaProduto'])->name('cantina.editaProduto.do');
