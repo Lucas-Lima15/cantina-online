@@ -21,7 +21,7 @@ class AuthController extends Controller
                 return redirect()->route('cantina.dashboard');
             }
             else if (Auth::user()->tipo == 'responsavel') {
-                return "Responsavel";
+                return redirect()->route('responsavel.dashboard');
             }
             else if (Auth::user()->tipo == 'aluno') {
                 return "Aluno";

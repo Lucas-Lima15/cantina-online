@@ -29,6 +29,10 @@ class User extends Authenticatable
         return $this->hasOne(Responsavel::class);
     }
 
+    public function aluno() {
+        return $this->hasOne(Aluno::class);
+    }
+
     /**
      * The attributes that should be hidden for serialization.
      *

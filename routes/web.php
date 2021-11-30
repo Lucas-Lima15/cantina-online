@@ -3,6 +3,8 @@
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\CantinaController;
+use App\Http\Controllers\ResponsavelController;
+use App\Models\Responsavel;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -43,3 +45,16 @@ Route::post('cantina/produtos/adicionar', [CantinaController::class, 'adicionarP
 Route::get('cantina/produtos/deletar/{id}', [CantinaController::class, 'deletaProduto'])->name('cantina.excluirProduto.do');
 Route::get('cantina/produtos/editar/{id}', [CantinaController::class, 'showEditaProduto'])->name('cantina.editaProduto');
 Route::post('cantina/produtos/editar/{id}', [CantinaController::class, 'editaProduto'])->name('cantina.editaProduto.do');
+
+// ResponsavelController
+Route::get('responsavel/dashboard', [ResponsavelController::class, 'showDashboard'])->name('responsavel.dashboard');
+Route::get('responsavel/alunos', [ResponsavelController::class, 'showAlunos'])->name('responsavel.alunos');
+
+Route::get('responsavel/alunos/adicionar', [ResponsavelController::class, 'showAdicionarAlunos'])->name('responsavel.AdicionarAluno');
+Route::post('responsavel/alunos/adicionar', [ResponsavelController::class, 'adicionarAlunos'])->name('responsavel.AdicionarAluno.do');
+Route::get('responsavel/alunos/deletar/{id}', [ResponsavelController::class, 'deletaAluno'])->name('responsavel.excluirAluno.do');
+Route::get('responsavel/alunos/editar/{id}', [ResponsavelController::class, 'showEditaAluno'])->name('responsavel.editaAluno');
+Route::post('responsavel/alunos/editar/{id}', [ResponsavelController::class, 'editaAluno'])->name('responsavel.editaAluno.do');
+
+Route::get('responsavel/alunos/depositar/{id}', [ResponsavelController::class, 'showDepositaAluno'])->name('responsavel.depositaAluno');
+Route::post('responsavel/alunos/depositar/{id}', [ResponsavelController::class, 'depositaAluno'])->name('responsavel.depositaAluno.do');

@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{asset('css/app.css')}}">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
-    <title>Dashboard</title>
+    <title>Alunos</title>
 </head>
 
 <body>
@@ -19,10 +19,10 @@
                 </a>
                 <ul class="nav justify-content-center">
                     <li class="nav-item">
-                        <a class="nav-link disabled" href="{{route('responsavel.dashboard')}}">Saldo/Depósito</a>
+                        <a class="nav-link" href="{{route('responsavel.dashboard')}}">Saldo/Depósito</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{route('responsavel.alunos')}}">Meu(s) Aluno(s)</a>
+                        <a class="nav-link disabled" href="{{route('responsavel.alunos')}}">Meu(s) Aluno(s)</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{{route('signout')}}">Logout</a>
@@ -34,8 +34,17 @@
 
 
     <main>
-        <div class="container text-center">
-            <h2>Saldo</h2>
+
+        <div class="container espaco">
+            <div class="row text-center col-lg-12">
+                <a href="{{route('responsavel.AdicionarAluno')}}">
+                    <button class="btn btn-success">Adicionar Aluno</button>
+                </a>
+            </div>
+        </div>
+
+        <div class="container text-center espaco">
+            <h2>Meus Alunos</h2>
 
             <div class="table-responsive">
                 <table class="table table-striped table-sm">
@@ -44,7 +53,11 @@
                             <th scope="col">Id</th>
                             <th scope="col">Matricula</th>
                             <th scope="col">Nome</th>
-                            <th scope="col">Saldo</th>
+                            <th scope="col">Telefone</th>
+                            <th scope="col">Email</th>
+                            <th scope="col">Turma</th>
+                            <th scope="col">Turno</th>
+                            <th scope="col"></th>
                             <th scope="col"></th>
                         </tr>
                     </thead>
@@ -54,9 +67,15 @@
                             <th scope="row">{{$user->id}}</th>
                             <td>{{$user->matricula}}</td>
                             <td>{{$user->user['name']}}</td>
-                            <td>{{$user->saldo}}</td>
-                            <td><a href="{{route('responsavel.depositaAluno', ['id' => $user->user['id']])}}">
-                                    <button class="btn btn-primary">Depositar</button>
+                            <td>{{$user->telefone}}</td>
+                            <td>{{$user->user['email']}}</td>
+                            <td>{{$user->turma}}</td>
+                            <td>{{$user->turno}}</td>
+                            <td><a href="{{route('responsavel.editaAluno', ['id' => $user->user['id']])}}">
+                                    <button class="btn btn-warning">Editar</button>
+                                </a></td>
+                            <td><a href="{{route('responsavel.excluirAluno.do', ['id' => $user->user['id']])}}">
+                                    <button class="btn btn-danger">Excluir</button>
                                 </a></td>
                         </tr>
                         @endforeach
@@ -65,5 +84,6 @@
             </div>
 
         </div>
+        
     </main>
 </body>
