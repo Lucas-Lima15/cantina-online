@@ -4,7 +4,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\CantinaController;
 use App\Http\Controllers\ResponsavelController;
-use App\Models\Responsavel;
+use App\Http\Controllers\AlunoController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -58,3 +58,7 @@ Route::post('responsavel/alunos/editar/{id}', [ResponsavelController::class, 'ed
 
 Route::get('responsavel/alunos/depositar/{id}', [ResponsavelController::class, 'showDepositaAluno'])->name('responsavel.depositaAluno');
 Route::post('responsavel/alunos/depositar/{id}', [ResponsavelController::class, 'depositaAluno'])->name('responsavel.depositaAluno.do');
+
+// AlunoController
+Route::get('aluno/dashboard', [AlunoController::class, 'showDashboard'])->name('aluno.dashboard');
+Route::get('aluno/comprar/{id}', [AlunoController::class, 'comprar'])->name('aluno.comprar');
