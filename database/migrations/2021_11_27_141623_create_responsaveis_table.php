@@ -15,7 +15,7 @@ class CreateResponsaveisTable extends Migration
     {
         Schema::create('responsaveis', function (Blueprint $table) {
             $table->id();
-            $table->integer('user_id')->unsigned();
+            $table->unsignedBigInteger('user_id')->unsigned();
             $table->timestamps();
             $table->string('telefone')->nullable();
             $table->string('cpf')->unique()->nullable();
