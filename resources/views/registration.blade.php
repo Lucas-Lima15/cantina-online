@@ -29,13 +29,14 @@
                     <div class="card-body">
 
                         <form action="{{ route('register.cantina.do') }}" method="POST">
-                            @csrf
+                        @csrf
+                        {{ csrf_field() }}
                             <div class="form-group mb-3">
                                 <input type="text" placeholder="Name" id="name" class="form-control" name="name"
                                     required autofocus>
                                 @if ($errors->has('name'))
                                 <span class="text-danger">{{ $errors->first('name') }}</span>
-                                @endif
+                                @endif  
                             </div>
 
                             <div class="form-group mb-3">
