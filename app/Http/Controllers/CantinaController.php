@@ -18,11 +18,12 @@ class CantinaController extends Controller
 
     public function registration(Request $request)
     {
+        /*
         $request->validate([
             'name' => 'required',
             'email' => 'required|email|unique:users',
             'password' => 'required'
-        ]);
+        ]);*/
 
         User::create([
             'name' => $request->name,
